@@ -12,7 +12,7 @@ export default class MainMenu extends React.Component {
             { name: "Edukasi", link: "/education", iconPath: "newspaper.svg" },
         ]
         return (
-            <nav className="h-20 2xl:w-2xl xl:w-xl lg:w-lg md:w-md sm:w-sm rounded-full bg-mypurple-darkest mx-auto transform -translate-y-10 flex flex-row justify-around items-center">
+            <nav className="h-20 2xl:w-2xl xl:w-xl lg:w-lg md:w-md sm:w-sm rounded-full bg-mypurple-darkest mx-auto transform -translate-y-10 flex flex-row justify-around items-center ">
                 {mainMenu.map(e => {
                     return (
                         <Link href={e.link}>
