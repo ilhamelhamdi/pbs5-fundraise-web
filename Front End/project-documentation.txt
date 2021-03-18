@@ -1,0 +1,265 @@
+/*
+
+
+API ENDPOINT & JSON FRONT END
+
+/
+
+/login
+
+/logout
+
+/register
+
+/user
+
+    /user/submission
+
+    /user/transaction-history
+
+    /user/edit
+
+    /user/change-password
+
+/campaign-submission
+
+/campaigns
+
+    /campaigns/all
+
+    /campaigns/all/?page=(no)&search=(keyword)&sort=(newest|popular|urgency)&filter=(team|public|foundation)
+
+    /campaigns/(category)
+
+    /campaigns/(category)/?page=(no)&sort=(newest|popular|urgency)&filter=(team|public|foundation)
+
+/(case slug)
+
+    /(case slug)/donate
+
+/payment/?invoice=(invoice)
+
+/universal-donation
+
+/shop-and-donate
+
+    /shop-and-donate/?page=(no)&search=(keyword)
+
+/education
+
+/faq
+
+/about-us
+
+
+
+
+
+ENDPOINT AND JSON BACKEND {/v1/api}
+/campaigns
+GET /campaigns?
+        q=(keyword)
+        category=(category),
+        filter=(team|public|foundation),
+        amount=(number)
+
+    FUNCTION
+    mendapatkan data json sederhana dari banyak campaign
+
+    JSON
+    [
+        {
+            id: "string"
+            title: "string, max=100",
+            slug: "string, max=20",
+            thumbnail: "string, img link"
+            fundraiser: { "object"
+                user_id: "string, max=20",
+                name: "string, max=100"
+            },
+            category: [
+                "string"
+            ],
+            fund_collected: "integer",
+            fund_targeted: "integer",
+            date_target: "integer, epoch",
+            created_at: "integer, epoch",
+        }
+    ]
+
+
+
+/campaign
+GET /campaign?
+        id=(id)
+
+    FUNCTION
+    mendapatkan data lengkap campaign
+
+    JSON
+    {
+        id: "string"
+        title: "string, max=100",
+        slug: "string, max=20",
+        thumbnail: "string, img link"
+        fundraiser: { "object"
+            username: "string, max=20",
+            user_id: "string"
+            name: "string, max=100"
+        },
+        category: [
+            "string"
+        ],
+        fund_collected: "integer",
+        fund_targeted: "integer",
+        date_target: "integer, epoch",
+        created_at: "integer, epoch",
+        story: {
+            description: "string"
+            img: [
+                "string, img link, max=5"
+            ]
+        },
+        fund-detail: [
+            {"abc": "integer"},
+            {"bcd": "integer"}
+        },
+    }
+
+/campaign/updates
+GET /campaign/updates?
+    id=(id)
+
+    FUNCTION
+    memperoleh data data update suatu campaign
+
+    JSON
+    {
+        id: "string"
+        updates: [
+            {
+                title: "string",
+                updated_at: "integer, epoch"
+                description: "string",
+                img: [
+                    "string, img link, max=5"
+                ]
+            }
+        ]
+    }
+
+POST /campaign/updates?
+    id=(id)
+
+    FUNCTION
+    menambakan data update suatu campaign
+
+    JSON from front end
+    {
+        title: "string",
+        description: "string",
+        img: [
+            "string, img link, max=5"
+        ]
+    }
+
+
+/campaign/donators
+GET /campaign/donators?
+        id=(id)
+
+    FUNCTION
+    menambakan data update suatu campaign
+
+    JSON
+    {
+        id: "string",
+        total_donator: "integer",
+        donators: [
+            {
+                name: "string",
+                date: "integer, epoch",
+                amount: "integer",
+                message: "string"
+            },
+        ]
+    }
+
+
+
+/user
+GET /user?
+        id=(id)
+
+    FUNCTION
+    mendapatkan data user profile secara lengkap
+
+    JSON
+    {
+        id: "string",
+        username: "string"
+        fullname: "string"
+        password: "string, hashed by md5"
+        gender: "string (men||women||-)"
+        birth_date: "integer, epoch"
+        ktp: "string, img link"
+        phone: "string"
+        address: "string"
+    }
+
+POST /user?
+        id=(id)
+    FUNCTION
+    menambahkan data minimal user saat registrasi
+
+    JSON from fronted
+    {
+        fullname: "string",
+        phone: "string", //
+        email: "string", // salah satu
+        password: "string, not hashed"
+    }
+
+PUT /user?
+        id=(id)
+    FUNCTION
+    memperbarui data user profile
+
+    JSON from front end
+    {
+        username: "string"
+        fullname: "string"
+        password: "string, hashed by md5"
+        gender: "string (men||women||-)"
+        birth_date: "integer, epoch"
+        ktp: "string, img link"
+        phone: "string"
+        address: "string"
+    }
+
+
+
+/user/transaction
+GET /user/transaction?
+    user_id=(userid)
+
+    FUNCTION
+    mendapatkan data transaksi user berdasarkan userid
+
+    JSON
+    {
+        user_id: "string",
+        transactions: [
+            {
+                date: "integer, epoch"
+                invoice: "string"
+                target: "string"
+                amount: "integer"
+                status: "string (success||failed||pending)"
+            },
+        ]
+    }
+
+
+
+*/

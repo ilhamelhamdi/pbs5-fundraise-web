@@ -1,0 +1,16 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+    overflow-x: hidden;
+}
+
+svg {
+    display: inline-block;
+    margin: 0;
+}
+
+h2 {
+    font-size: 1.5rem;
+}
