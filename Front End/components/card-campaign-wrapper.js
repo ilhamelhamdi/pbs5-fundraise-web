@@ -16,7 +16,7 @@ export default function CardCampaignWrapper(props) {
     }
     return (
         <Link href="">
-            <a className="card-campaign-wrapper w-6/20 rounded-2xl bg-white block transform transition-all hover:-translate-y-4">
+            <a className="card-campaign-wrapper w-6/20 rounded-2xl bg-white block transform transition-all hover:-translate-y-2 mb-6 shadow-lg">
                 <Thumbnail data={props.data.thumbnail} />
                 <CardInfo id={props.data.id}>
                     <h3 className="campaign-title inline-block h-12 font-medium text-gray-800">{props.data.title}</h3>
