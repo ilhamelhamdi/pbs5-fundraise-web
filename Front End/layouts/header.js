@@ -51,10 +51,10 @@ export default class Header extends React.Component {
                         </a>
                     </Link>
                     <nav className="flex w-max items-center">
-                        {navigasi.map((e, index) => <Link href={e.link} key={index}><a className="nav-header inline-block rounded-lg  mx-2 p-2 text-l bg-opacity-0 bg-black hover:bg-opacity-20 transition-all">{e.name}</a></Link>)}
+                        {navigasi.map((e, index) => <Link href={e.link} key={index}><a className="nav-header inline-block rounded-lg  mx-2 p-2 text-l bg-opacity-0 bg-black hover:bg-opacity-40 transition-all">{e.name}</a></Link>)}
                     </nav>
                     <div className="flex w-max items-center">
-                        {user.map((e, index) => <Link href={e.link} key={index}><a className="nav-header inline-block rounded-lg  mx-2 p-2 text-l bg-opacity-0 bg-black hover:bg-opacity-20 transition-all">{e.name}</a></Link>)}
+                        {user.map((e, index) => <Link href={e.link} key={index}><a className="nav-header inline-block rounded-lg  mx-2 p-2 text-l bg-opacity-0 bg-black hover:bg-opacity-40 transition-all">{e.name}</a></Link>)}
                     </div>
                 </div>
             </header>

@@ -15,8 +15,8 @@ export default class MainMenu extends React.Component {
             <nav className="h-20 2xl:w-2xl xl:w-xl lg:w-lg md:w-md sm:w-sm rounded-full bg-mypurple-darkest mx-auto transform -translate-y-10 flex flex-row justify-around items-center ">
                 {mainMenu.map(e => {
                     return (
-                        <Link href={e.link}>
-                            <a className="text-white h-full flex items-center transform transition-all hover:scale-110">
+                        <Link href={e.link} key={e.name}>
+                            <a className="text-white h-full flex items-center transform transition-all hover:scale-110 hover:underline">
                                 <Image src={`/img/${e.iconPath}`} width={25} height={25} color="white" />
                                 <span className="ml-2">{e.name}</span>
                             </a>

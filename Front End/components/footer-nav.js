@@ -15,7 +15,7 @@ export default function FooterNav(props) {
         if (props.name === "Whatsapp") { icon = <FaWhatsapp size={25} color="white" ></FaWhatsapp >; bgcolor = "green-600" }
     }
     return (
-        <Link href={props.link} key={props.index}>
+        <Link href={props.link}>
             <a className={`inline-block w-max mt-4 text-gray-500 hover:text-${bgcolor} transition-all`}>
                 {props.hasIcon ? (<span className={`inline-block p-2 bg-${bgcolor} rounded-full mr-4`}>{icon}</span>) : ''}
                 {props.name}

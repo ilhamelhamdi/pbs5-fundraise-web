@@ -11,7 +11,7 @@ export default function Layout(props) {
                 <title>{props.title + ' | PBS5.org'}</title>
             </Head>
             <Header></Header>
-            <Body>
+            <Body hasBodyTopPad={props.hasBodyTopPad}>
                 {props.children}
             </Body>
             <Footer></Footer>
