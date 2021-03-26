@@ -1,0 +1,36 @@
+{
+  "kind": "collectionType",
+  "collectionName": "payments",
+  "info": {
+    "name": "Payment",
+    "description": ""
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true,
+    "draftAndPublish": true
+  },
+  "attributes": {
+    "campaign_id": {
+      "type": "string"
+    },
+    "user_id": {
+      "type": "string"
+    },
+    "invoice": {
+      "type": "string"
+    },
+    "status": {
+      "type": "enumeration",
+      "enum": [
+        "succeed",
+        "failed",
+        "cancelled",
+        "pending"
+      ]
+    },
+    "total_amount": {
+      "type": "integer"
+    }
+  }
+}

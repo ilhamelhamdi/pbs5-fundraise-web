@@ -1,0 +1,17 @@
+{
+  "kind": "collectionType",
+  "collectionName": "donors",
+  "info": {
+    "name": "Donor"
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true,
+    "draftAndPublish": true
+  },
+  "attributes": {
+    "campaign_id": {
+      "type": "string"
+    }
+  }
+}

@@ -1,0 +1,48 @@
+{
+  "kind": "collectionType",
+  "collectionName": "user_details",
+  "info": {
+    "name": "User Detail",
+    "description": ""
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true,
+    "draftAndPublish": true
+  },
+  "attributes": {
+    "user_id": {
+      "type": "string"
+    },
+    "gender": {
+      "type": "enumeration",
+      "enum": [
+        "man",
+        "woman"
+      ]
+    },
+    "birth_date": {
+      "type": "date"
+    },
+    "ktp": {
+      "model": "file",
+      "via": "related",
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos"
+      ],
+      "plugin": "upload",
+      "required": false
+    },
+    "no_ktp": {
+      "type": "string"
+    },
+    "phone": {
+      "type": "string"
+    },
+    "address": {
+      "type": "text"
+    }
+  }
+}

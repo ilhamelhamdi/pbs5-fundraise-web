@@ -1,0 +1,16 @@
+{
+  "collectionName": "components_list_fund_details",
+  "info": {
+    "name": "fund detail",
+    "icon": "file-alt"
+  },
+  "options": {},
+  "attributes": {
+    "purpose": {
+      "type": "string"
+    },
+    "amount": {
+      "type": "integer"
+    }
+  }
+}

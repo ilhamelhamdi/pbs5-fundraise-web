@@ -1,0 +1,20 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+    overflow-x: hidden;
+}
+
+svg {
+    display: inline-block;
+    margin: 0;
+}
+
+h2 {
+    @apply text-lg sm:text-xl md:text-2xl;
+}
+
+h3 {
+    @apply text-sm md:text-base;
+}

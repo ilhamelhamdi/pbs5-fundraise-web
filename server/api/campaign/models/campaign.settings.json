@@ -1,0 +1,44 @@
+{
+  "kind": "collectionType",
+  "collectionName": "campaigns",
+  "info": {
+    "name": "campaign"
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true,
+    "draftAndPublish": true
+  },
+  "attributes": {
+    "title": {
+      "type": "string"
+    },
+    "tagline": {
+      "type": "string"
+    },
+    "poster": {
+      "model": "file",
+      "via": "related",
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos"
+      ],
+      "plugin": "upload",
+      "required": false
+    },
+    "date_target": {
+      "type": "date"
+    },
+    "fund_collected": {
+      "type": "integer"
+    },
+    "fund_targeted": {
+      "type": "integer"
+    },
+    "categories": {
+      "via": "campaigns",
+      "collection": "category"
+    }
+  }
+}

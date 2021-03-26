@@ -1,0 +1,29 @@
+{
+  "kind": "collectionType",
+  "collectionName": "campaign_details",
+  "info": {
+    "name": "Campaign Detail",
+    "description": ""
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true,
+    "draftAndPublish": true
+  },
+  "attributes": {
+    "campaign_id": {
+      "type": "string"
+    },
+    "story": {
+      "type": "richtext"
+    },
+    "fund_detail": {
+      "type": "component",
+      "repeatable": true,
+      "component": "list.fund-detail"
+    },
+    "head": {
+      "model": "campaign"
+    }
+  }
+}
