@@ -9,14 +9,18 @@ import Button from '../components/button'
 import Banner from '../components/banner.js'
 import { campaigns, shops, education_materials } from '../models/index'
 import CardEducationWrapper from '../components/card-education-wrapper.js'
-import { GetWidth } from '../lib/responsive'
 
+const serviceMenu = [
+  { text: 'Aman & Transparan', imgPath: 'security.svg' },
+  { text: 'Beragam Metode Pembayaran', imgPath: 'payment.svg' },
+  { text: 'Dapat Diakses Kapan Saja', imgPath: 'anytime.svg' }
+]
 
-export default function Home(props) {
+export default function Home() {
 
   const layoutConf = { title: "Home", hasBodyTopPad: false, withChangeHeader: true }
-  const buttonConf = { withBorder: true, withChange: true, eventType: { on: 'mouseenter', off: 'mouseleave' } }
-  const [windowWidth, breakpoint] = GetWidth()
+  const buttonConf = { withBorder: true, withChange: true, eventType: [{ on: 'mouseenter', off: 'mouseleave' }, { on: 'touchstart', off: 'touchend' }] }
+
   return (
     <Layout {...layoutConf}>
 
@@ -95,21 +99,16 @@ export default function Home(props) {
       <Banner color="mypurple-light" className="flex-col sm:flex-row flex-wrap justify-between" hasMarginBt={false}>
         <h2 className="w-full text-center text-2xl font-bold text-mypurple-darkest">Mengapa Donasi Melalui PBS5?</h2>
         <p className="w-full text-center my-4">CEPBS5 memudahkan Anda dalam melakukan donasi online dan penggalangan dana untuk orang yang membutuhkan, namun mengapa harus <b>PBS5?</b></p>
-        <div className="w-2/3 sm:w-5/20 mx-auto mt-8 sm:mt-0">
-          <Image src="/img/security.svg" width={1000} height={1000} />
-          <p className="text-center text-xl sm:text-lg text-mypurple-darkest font-semibold">Aman & Transparan</p>
-        </div>
-        <div className="w-2/3 sm:w-5/20 mx-auto mt-8 sm:mt-0">
-          <Image src="/img/payment.svg" width={1000} height={1000} />
-          <p className="text-center text-xl sm:text-lg text-mypurple-darkest font-semibold">Beragam Metode Pembayaran</p>
-        </div>
-        <div className="w-2/3 sm:w-5/20 mx-auto mt-8 sm:mt-0">
-          <Image src="/img/anytime.svg" width={1000} height={1000} />
-          <p className="text-center text-xl sm:text-lg text-mypurple-darkest font-semibold">Dapat Diakses Kapan Saja</p>
-        </div>
+        {serviceMenu.map(service => (
+          <div className="w-2/3 sm:w-5/20 mx-auto mt-8 sm:mt-0" key={service.text.toLowerCase().replace(/ /g, "-")}>
+            <Image src={`/img/${service.imgPath}`} width={1000} height={1000} />
+            <p className="text-center text-xl sm:text-lg text-mypurple-darkest font-semibold">{service.text}</p>
+          </div>
+        ))}
+
       </Banner>
 
-    </Layout>
+    </Layout >
   )
 
 }

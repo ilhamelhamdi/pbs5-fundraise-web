@@ -2,24 +2,17 @@ import React, { useEffect } from 'react'
 import Image from 'next/image'
 import { useVisible } from '../lib/global'
 import Link from 'next/link'
-import HomeIcon from '../public/img/home.svg'
-import DonationIcon from '../public/img/donation.svg'
-import CampaignIcon from '../public/img/campaign.svg'
-import UniversalDonationIcon from '../public/img/universal-donation.svg'
-import ShopAndDonateIcon from '../public/img/shop-and-donate.svg'
-import EducationIcon from '../public/img/education.svg'
-import FaqIcon from '../public/img/faq.svg'
-import AboutUsIcon from '../public/img/about-us.svg'
+import Button from '../components/button'
 
 const sideBarNav = [
-  { text: "Beranda", link: "/" },
-  { text: "Donasi", link: "/campaigns" },
-  { text: "Galang Dana", link: "/campaign-submission" },
-  { text: "Donasi Universal", link: "/universal-donation" },
-  { text: "Belanja & Donasi", link: "/shop-and-donate" },
-  { text: "Edukasi", link: "/education" },
-  { text: "FAQ", link: "/faq" },
-  { text: "Tentang Kami", link: "/about-us" },
+  { text: "Beranda", link: "/", imgPath: "home.svg" },
+  { text: "Donasi", link: "/campaign/all", imgPath: "donation.svg" },
+  { text: "Galang Dana", link: "/campaign-submission", imgPath: "campaign-submission.svg" },
+  { text: "Donasi Universal", link: "/universal-donation", imgPath: "universal-donation.svg" },
+  { text: "Belanja & Donasi", link: "/shop-and-donate", imgPath: "shop-and-donate.svg" },
+  { text: "Edukasi", link: "/education", imgPath: "education.svg" },
+  { text: "FAQ", link: "/faq", imgPath: "faq.svg" },
+  { text: "Tentang Kami", link: "/about-us", imgPath: "about-us.svg" },
 ]
 const user = {
   name: "Ilham Abdillah",
@@ -32,10 +25,8 @@ export default function Sidebar({ sendSidebarStatus, sidebarStatus }) {
   const isLoggedIn = true
   const styleNav = (sidebarStatus === 'on') ? 'left-0' : '-left-full'
   const styleBg = (sidebarStatus === 'off') && 'hidden'
-  // const coba = <div>Halo halo</div>
-  // const handleCloseBtn = () => {
-  //   sendSidebarStatus('off')
-  // }
+  const loginBtnConf = { color1: 'white', color2: 'mypurple-darkest', withBorder: true, withChange: true, link: '/login', text: 'Masuk', eventType: { on: 'touchstart', off: 'touchend' }, width: 'full' }
+  const registerBtnConf = { color1: 'white', color2: 'mypurple-darkest', withBorder: true, withChange: true, link: '/register', text: 'Daftar', eventType: { on: 'touchstart', off: 'touchend' }, width: '1/2' }
 
   useEffect(() => {
     setIsVisible(sidebarStatus === 'on')
@@ -54,7 +45,7 @@ export default function Sidebar({ sendSidebarStatus, sidebarStatus }) {
         {/* User Profile Or Guest */}
         {isLoggedIn ? (
           <Link href="/user">
-            <a className="account flex flex-row items-center border-mypurple-light h-20">
+            <a className="account flex flex-row items-center border-mypurple-lighter h-20">
               <div className="flex-none flex justify-center items-center w-14 h-14 bg-white border-4 border-white rounded-full overflow-hidden">
                 <Image src={`/img/${user.avatar}`} alt="avatar" width="100" height="100" />
               </div>
@@ -64,28 +55,37 @@ export default function Sidebar({ sendSidebarStatus, sidebarStatus }) {
               </div>
             </a>
           </Link>
-        ) : null}
+        ) : (
+          <div className="flex flex-row flex-wrap justify-evenly text-white">
+            <p className="flex-none whitespace-normal w-full mb-2">Anda belum masuk. Silakan <b>masuk</b> atau <b>daftar</b></p>
+            <Button {...loginBtnConf} className="flex-auto mb-2" />
+            <Button {...registerBtnConf} className="flex-auto mb-6" />
+          </div>
+        )}
 
         <div className="sidebar-nav pt-4 border-t">
-          {sideBarNav.map(nav => {
-            const iconStyle = { fill: '#E5BDFF', width: 30, height: 30 }
-            return (
-              <div className="text-white flex flex-row items-center" key={nav.text}>
+          {sideBarNav.map(nav => (
+            <Link href={nav.link}>
+              <a className="text-white flex flex-row items-center hover:underline" key={nav.text.toLowerCase().replace(/ /g, "-")} >
                 <div className="h-12 mr-4 flex items-center">
-                  {(nav.text == sideBarNav[0].text) && <HomeIcon {...iconStyle} />}
-                  {(nav.text == sideBarNav[1].text) && <DonationIcon {...iconStyle} />}
-                  {(nav.text == sideBarNav[2].text) && <CampaignIcon {...iconStyle} />}
-                  {(nav.text == sideBarNav[3].text) && <UniversalDonationIcon {...iconStyle} />}
-                  {(nav.text == sideBarNav[4].text) && <ShopAndDonateIcon {...iconStyle} />}
-                  {(nav.text == sideBarNav[5].text) && <EducationIcon {...iconStyle} />}
-                  {(nav.text == sideBarNav[6].text) && <FaqIcon {...iconStyle} />}
-                  {(nav.text == sideBarNav[7].text) && <AboutUsIcon {...iconStyle} />}
+                  <Image src={`/img/${nav.imgPath}`} width="30" height="30" />
                 </div>
-                { nav.text}
-              </div>
-            )
-          })}
+                {nav.text}
+              </a>
+            </Link>
+          ))}
         </div>
+
+        {isLoggedIn && (
+          <Link href="/">
+            <a className="logout absolute left-8 bottom-10 text-white  flex flex-row items-center hover:underline">
+              <div className="h-12 mr-4 flex items-center">
+                <Image src={`/img/logout.svg`} width="30" height="30" />
+              </div>
+            Keluar
+          </a>
+          </Link>
+        )}
 
       </div>
     </>

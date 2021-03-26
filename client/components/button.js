@@ -9,7 +9,7 @@ const Button = ({
     height = '8',
     withBorder,
     withChange,
-    eventType: { on, off },
+    eventType,
     link,
     text,
     className,
@@ -29,27 +29,32 @@ const Button = ({
     useEffect(() => {
         if (!withChange) return
         const target = element.current
-        target.addEventListener(on, handleOn)
-        target.addEventListener(off, handleOff)
+        if (Array.isArray(eventType)) {
+            eventType.map((e) => {
+                target.addEventListener(e.on, handleOn)
+                target.addEventListener(e.off, handleOff)
+            })
+        } else {
+            target.addEventListener(eventType.on, handleOn)
+            target.addEventListener(eventType.off, handleOff)
+        }
+
         return () => {
-            target.removeEventListener(on, handleOn);
-            target.removeEventListener(off, handleOff);
+            if (Array.isArray(eventType)) {
+                eventType.map((e) => {
+                    target.removeEventListener(e.on, handleOn)
+                    target.removeEventListener(e.off, handleOff)
+                })
+            } else {
+                target.removeEventListener(eventType.on, handleOn)
+                target.removeEventListener(eventType.off, handleOff)
+            }
         }
     }, [])
 
-    // useEffect(() => {
-    //     if (withChange) return
-    //     const currentTarget = element.hasOwnProperty('current') ? element.current : element
-    //     if (currentTarget) currentTarget.addEventListener(off, handleChange)
-    //     return () => {
-    //         if (currentTarget) currentTarget.removeEventListener(off, handleChange);
-    //     }
-    // }, [style, on, off])
-
-
     return (
         <Link href={link}>
-            <a className={`rounded-full block px-6 box-border transition-all ${className} ${isActive ? styleActive : styleInactive} w-${width} h-${height}`}
+            <a className={`rounded-full px-6 box-border transition-all flex justify-center items-center ${className} ${isActive ? styleActive : styleInactive} w-${width} h-${height}`}
                 ref={element}>
                 <span className="inline-block align-middle">
                     {text}

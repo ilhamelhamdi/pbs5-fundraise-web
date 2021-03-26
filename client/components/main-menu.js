@@ -1,17 +1,11 @@
 import React from 'react'
 import Link from 'next/link'
-import { GetWidth } from '../lib/responsive'
-import DonationIcon from '../public/img/donation.svg'
-import CampaignIcon from '../public/img/campaign.svg'
-import UniversalDonationIcon from '../public/img/universal-donation.svg'
-import ShopAndDonateIcon from '../public/img/shop-and-donate.svg'
-import EducationIcon from '../public/img/education.svg'
-
+import Image from 'next/image'
 export default class MainMenu extends React.Component {
     render() {
         const mainMenu = [
-            { text: "Donasi Sekarang", link: "/campaigns/all", iconPath: "donation.svg" },
-            { text: "Galang Dana", link: "/campaign-submission", iconPath: "campaign.svg" },
+            { text: "Donasi Sekarang", link: "/campaign/all", iconPath: "donation.svg" },
+            { text: "Galang Dana", link: "/campaign-submission", iconPath: "campaign-submission.svg" },
             { text: "Donasi Universal", link: "/universal-donation", iconPath: "universal-donation.svg" },
             { text: "Belanja & Donasi", link: "/shop-and-donate", iconPath: "shop-and-donate.svg" },
             { text: "Edukasi", link: "/education", iconPath: "education.svg" },
@@ -28,11 +22,7 @@ export default class MainMenu extends React.Component {
                             >
                                 <div className="flex justify-center items-center md:h-full md:w-1/3 mb-2 md:mb-0">
                                     <div className="flex items-center flex-none">
-                                        {(e.text == mainMenu[0].text) && <DonationIcon {...iconStyle} />}
-                                        {(e.text == mainMenu[1].text) && <CampaignIcon {...iconStyle} />}
-                                        {(e.text == mainMenu[2].text) && <UniversalDonationIcon {...iconStyle} />}
-                                        {(e.text == mainMenu[3].text) && <ShopAndDonateIcon {...iconStyle} />}
-                                        {(e.text == mainMenu[4].text) && <EducationIcon {...iconStyle} />}
+                                        <Image src={`/img/${e.iconPath}`} width={30} height={30} className="flex-none text-white fill-current" />
                                     </div>
                                 </div>
                                 <div className="w-full text-center md:text-left h-8 flex items-center justify-center">{e.text}</div>
