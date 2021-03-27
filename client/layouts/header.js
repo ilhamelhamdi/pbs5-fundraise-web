@@ -50,7 +50,7 @@ export default function Header({ withChangeHeader = false, sendSidebarStatus }) 
         return (
             <>
                 <Link href="/search">
-                    <a className="h-full w-full flex items-center px-2"><SearchBar /></a>
+                    <a className="h-full w-full flex items-center px-2"><SearchBar isReadOnly={true} /></a>
                 </Link>
                 <IconContext.Provider value={{ color: "white", size: 24 }}>
                     <div className="h-full w-max flex justify-center items-center" onClick={handleSidebar}><BiListUl /></div>

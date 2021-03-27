@@ -6,7 +6,7 @@ import { campaign_category_filter, campaign_sort_filter, campaign_location_filte
 
 
 export default function MobileFilter(props) {
-  const { ref, isVisible, setIsVisible } = useVisible(false)
+  const { ref, isVisible, setIsVisible } = useVisible(false, ['click', 'touchstart'])
   return (
     <>
       <div className="h-14 w-14 p-4 rounded-full fixed bottom-8 right-8 z-30 bg-mypurple-darkest shadow-xl" onClick={() => setIsVisible(true)}>

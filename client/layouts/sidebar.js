@@ -21,7 +21,7 @@ const user = {
 }
 
 export default function Sidebar({ sendSidebarStatus, sidebarStatus }) {
-  const { ref, isVisible, setIsVisible } = useVisible()
+  const { ref, isVisible, setIsVisible } = useVisible(false, ['click', 'touchstart'])
   const isLoggedIn = true
   const styleNav = (sidebarStatus === 'on') ? 'left-0' : '-left-full'
   const styleBg = (sidebarStatus === 'off') && 'hidden'

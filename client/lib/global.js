@@ -1,6 +1,6 @@
 import { useState, useRef, useEffect } from "react"
 
-export const useVisible = (initialIsVisible) => {
+export const useVisible = (initialIsVisible, eventType = ['click']) => {
     const [isVisible, setIsVisible] = useState(initialIsVisible);
     const ref = useRef(null);
 
@@ -11,9 +11,13 @@ export const useVisible = (initialIsVisible) => {
     };
 
     useEffect(() => {
-        document.addEventListener('click', handleClickOutside, true);
+        if (Array.isArray(eventType)) {
+            eventType.map(e => document.addEventListener(e, handleClickOutside, true))
+        }
         return () => {
-            document.removeEventListener('click', handleClickOutside, true);
+            if (Array.isArray(eventType)) {
+                eventType.map(e => document.removeEventListener(e, handleClickOutside, true))
+            }
         };
     }, []);
 
