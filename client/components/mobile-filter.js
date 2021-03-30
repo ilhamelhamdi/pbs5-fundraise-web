@@ -13,7 +13,7 @@ export default function MobileFilter(props) {
         <Image src="/img/filter-button.svg" width={100} height={100} />
       </div>
 
-      <div className={`fixed bg-white w-full h-80 z-40 transform transition-all duration-700 ${isVisible ? 'bottom-0' : '-bottom-full'}`} ref={ref}>
+      <div className={`fixed bg-white w-full h-80 z-40 transform transition-all duration-700 ${isVisible ? 'bottom-0' : '-bottom-1/2'}`} ref={ref}>
         <div className="w-full bg-mypurple-darkest text-white text-lg py-2 px-6 flex flex-row justify-between">
           Filter
           <button className="focus:outline-none" onClick={() => setIsVisible(false)}>x</button>

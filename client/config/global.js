@@ -3,5 +3,5 @@ export const currencySetting = {
     thousandSeparator: '.',
     prefix: 'Rp ',
     decimalSeparator: ',',
-    suffix: ',-'
+    // suffix: ',-'
 }

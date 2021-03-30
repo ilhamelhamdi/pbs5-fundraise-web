@@ -65,8 +65,8 @@ export default function Sidebar({ sendSidebarStatus, sidebarStatus }) {
 
         <div className="sidebar-nav pt-4 border-t">
           {sideBarNav.map(nav => (
-            <Link href={nav.link}>
-              <a className="text-white flex flex-row items-center hover:underline" key={nav.text.toLowerCase().replace(/ /g, "-")} >
+            <Link href={nav.link} key={nav.text.toLowerCase().replace(/ /g, "-")}>
+              <a className="text-white flex flex-row items-center hover:underline"  >
                 <div className="h-12 mr-4 flex items-center">
                   <Image src={`/img/${nav.imgPath}`} width="30" height="30" />
                 </div>
