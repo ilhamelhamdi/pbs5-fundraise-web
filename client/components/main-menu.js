@@ -4,7 +4,7 @@ import Image from 'next/image'
 export default class MainMenu extends React.Component {
     render() {
         const mainMenu = [
-            { text: "Donasi Sekarang", link: "/campaign/all", iconPath: "donation.svg" },
+            { text: "Donasi Sekarang", link: "/discover/all", iconPath: "donation.svg" },
             { text: "Galang Dana", link: "/campaign-submission", iconPath: "campaign-submission.svg" },
             { text: "Donasi Universal", link: "/universal-donation", iconPath: "universal-donation.svg" },
             { text: "Belanja & Donasi", link: "/shop-and-donate", iconPath: "shop-and-donate.svg" },

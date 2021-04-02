@@ -37,7 +37,7 @@ export default class Footer extends React.Component {
         let icon
         return (
             <footer className="bg-white w-full">
-                <div className="container xl:max-w-screen-lg mx-auto flex flex-col md:flex-row  py-8">
+                <div className="container xl:max-w-screen-lg 2xl:max-w-screen-xl mx-auto flex flex-col md:flex-row  py-8">
                     <div className="flex flex-col h-full p-4 lg:p-8 w-full md:w-2/5">
                         <h3>Logo</h3>
                         <p className="text-gray-500">CEPBS5.org adalah situs web yang dibangun khusus untuk menggalang dana bantuan dan donasi secara online</p>

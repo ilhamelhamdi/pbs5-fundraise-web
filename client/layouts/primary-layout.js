@@ -23,11 +23,12 @@ export default function Layout(props) {
             <Header
                 withChangeHeader={props.withChangeHeader}
                 sendSidebarStatus={getSidebarStatus}
+                withLogoNoBackBtn={props.withLogoNoBackBtn}
             />
             <Body hasBodyTopPad={props.hasBodyTopPad} className="font-sans">
                 {props.children}
             </Body>
-            <Footer />
+            {(props.withFooter != false) && <Footer />}
         </>
     )
 }

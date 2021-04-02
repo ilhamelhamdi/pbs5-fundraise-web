@@ -2,7 +2,7 @@ export const campaigns = [
     {
         title: '606 Santri Tinggal di Bilik Kayu 2X2 Meter',
         thumbnail: {
-            imgPath: '/img/b3b81025-3da5-4957-94c9-33dba3a04e32.webp',
+            url: '/img/b3b81025-3da5-4957-94c9-33dba3a04e32.webp',
             width: 400,
             height: 210,
         },
@@ -15,7 +15,7 @@ export const campaigns = [
     {
         title: 'Puluhan Yatim Dhuafa Ingin Meneruskan Pendidikan',
         thumbnail: {
-            imgPath: '/img/b3b81025-3da5-4957-94c9-33dba3a04e32.webp',
+            url: '/img/b3b81025-3da5-4957-94c9-33dba3a04e32.webp',
             width: 400,
             height: 210,
         },
@@ -28,7 +28,7 @@ export const campaigns = [
     {
         title: 'Gerakan Berbagi Kuota dari Kerabat',
         thumbnail: {
-            imgPath: '/img/b3b81025-3da5-4957-94c9-33dba3a04e32.webp',
+            url: '/img/b3b81025-3da5-4957-94c9-33dba3a04e32.webp',
             width: 400,
             height: 210,
         },
@@ -44,7 +44,7 @@ export const shops = [
     {
         title: 'Aliya Rajasa - Preloved For Good | Bantu Pasien Cerebral Palsy',
         thumbnail: {
-            imgPath: '/img/b3b81025-3da5-4957-94c9-33dba3a04e32.webp',
+            url: '/img/b3b81025-3da5-4957-94c9-33dba3a04e32.webp',
             width: 400,
             height: 210,
         },
@@ -57,7 +57,7 @@ export const shops = [
     {
         title: 'Bantu Pasien Kanker & Menangkan Jam Tangan Eksklusif Pala Nusantara',
         thumbnail: {
-            imgPath: '/img/b3b81025-3da5-4957-94c9-33dba3a04e32.webp',
+            url: '/img/b3b81025-3da5-4957-94c9-33dba3a04e32.webp',
             width: 400,
             height: 210,
         },
@@ -70,7 +70,7 @@ export const shops = [
     {
         title: '#SambungKasih: Bantu Sediakan Paket Kesehatan untuk Pasien dengan Gangguan Pernapasan!',
         thumbnail: {
-            imgPath: '/img/b3b81025-3da5-4957-94c9-33dba3a04e32.webp',
+            url: '/img/b3b81025-3da5-4957-94c9-33dba3a04e32.webp',
             width: 400,
             height: 210,
         },
@@ -87,7 +87,7 @@ export const education_materials = [
     {
         title: 'Aliya Rajasa - Preloved For Good | Bantu Pasien Cerebral Palsy',
         thumbnail: {
-            imgPath: '/img/b3b81025-3da5-4957-94c9-33dba3a04e32.webp',
+            url: '/img/b3b81025-3da5-4957-94c9-33dba3a04e32.webp',
             width: 600,
             height: 320,
         },
@@ -97,7 +97,7 @@ export const education_materials = [
     {
         title: 'Aliya Rajasa - Preloved For Good | Bantu Pasien Cerebral Palsy',
         thumbnail: {
-            imgPath: '/img/b3b81025-3da5-4957-94c9-33dba3a04e32.webp',
+            url: '/img/b3b81025-3da5-4957-94c9-33dba3a04e32.webp',
             width: 600,
             height: 320,
         },
@@ -107,7 +107,7 @@ export const education_materials = [
     {
         title: 'Aliya Rajasa - Preloved For Good | Bantu Pasien Cerebral Palsy',
         thumbnail: {
-            imgPath: '/img/b3b81025-3da5-4957-94c9-33dba3a04e32.webp',
+            url: '/img/b3b81025-3da5-4957-94c9-33dba3a04e32.webp',
             width: 600,
             height: 320,
         },
@@ -117,7 +117,7 @@ export const education_materials = [
     {
         title: 'Aliya Rajasa - Preloved For Good | Bantu Pasien Cerebral Palsy',
         thumbnail: {
-            imgPath: '/img/b3b81025-3da5-4957-94c9-33dba3a04e32.webp',
+            url: '/img/b3b81025-3da5-4957-94c9-33dba3a04e32.webp',
             width: 600,
             height: 320,
         },

@@ -7,7 +7,7 @@ import Layout from '../layouts/primary-layout.js'
 import CardCampaignWrapper from '../components/card-campaign-wrapper.js'
 import Button from '../components/button'
 import Banner from '../components/banner.js'
-import { campaigns, shops, education_materials } from '../models/index'
+import { shops, education_materials } from '../models/index'
 import CardEducationWrapper from '../components/card-education-wrapper.js'
 
 const serviceMenu = [
@@ -16,7 +16,7 @@ const serviceMenu = [
   { text: 'Dapat Diakses Kapan Saja', imgPath: 'anytime.svg' }
 ]
 
-export default function Home() {
+export default function Home({ campaigns }) {
 
   const layoutConf = { title: "Home", hasBodyTopPad: false, withChangeHeader: true }
   const buttonConf = { withBorder: true, withChange: true, eventType: [{ on: 'mouseenter', off: 'mouseleave' }, { on: 'touchstart', off: 'touchend' }] }
@@ -34,11 +34,20 @@ export default function Home() {
         <h2>Penggalangan Dana Pilihan</h2>
         <div
           className="card-wrapper pt-6 flex flex-row  max-w-full flex-wrap justify-between md:overflow-x-hidden">
-          {campaigns.map(campaign => <CardCampaignWrapper data={campaign} key={campaign.id} className="w-full sm:w-1/2 md:w-1/3 flex-auto" withXScroll={true} isLandscape={true} />)}
-          {campaigns.map(campaign => <CardCampaignWrapper data={campaign} key={campaign.id} className="w-full sm:w-1/2 md:w-1/3 flex-auto" withXScroll={true} isLandscape={true} />)}
+          {campaigns.map(campaign => {
+            const cardCampaignData = {
+              tagline: campaign.tagline,
+              title: campaign.title,
+              thumbnail: campaign.poster.formats.small,
+              fundraiser: campaign.fundraiser.fullname,
+              fund_collected: campaign.fund_collected,
+              fund_targeted: campaign.fund_collected,
+            }
+            return <CardCampaignWrapper {...cardCampaignData} key={campaign.id} className="w-full sm:w-1/2 md:w-1/3 flex-auto" withXScroll={true} isLandscape={true} />
+          })}
         </div>
         <Button
-          link={"/campaigns/all"}
+          link={"/campaign/all"}
           text={"Lihat lainnya"}
           color1={'mypurple-dark'}
           className="float-right mr-4"
@@ -71,7 +80,7 @@ export default function Home() {
       <MainWrapper id="shops">
         <h2>Belanja & Donasi</h2>
         <div className="card-wrapper pt-6 overflow-x-scroll flex flex-row  max-w-full md:flex-wrap md:justify-between md:overflow-x-hidden">
-          {shops.map(shop => <CardCampaignWrapper data={shop} key={shop.id} className="w-60 flex-none md:w-6/20 md:flex-auto" />)}
+          {/* {shops.map(shop => <CardCampaignWrapper data={shop} key={shop.id} className="w-60 flex-none md:w-6/20 md:flex-auto" />)} */}
         </div>
         <Button
           link={"/universal-donation"}
@@ -85,7 +94,7 @@ export default function Home() {
       <MainWrapper id="education">
         <h2>Edukasi</h2>
         <div className="card-wrapper pt-6 overflow-x-scroll flex flex-row  max-w-full md:flex-wrap md:justify-between md:overflow-x-hidden">
-          {education_materials.map(material => <CardEducationWrapper data={material} key={material.id} />)}
+          {/* {education_materials.map(material => <CardEducationWrapper data={material} key={material.id} />)} */}
         </div>
         <Button
           link={"/education"}
@@ -111,4 +120,14 @@ export default function Home() {
     </Layout >
   )
 
+}
+
+export async function getStaticProps() {
+  const res_campaigns = await fetch(`${process.env.API_BASE_URL}/campaigns?_limit=6`)
+  const campaigns = await res_campaigns.json()
+
+  return {
+    props: { campaigns },
+    revalidate: 60, // In seconds
+  }
 }

@@ -4,7 +4,6 @@ import { BiSearch } from 'react-icons/bi'
 
 export default function SearchBar({ isReadOnly = false }) {
     const [value, setValue] = useState('')
-    const readOnlyConf = isReadOnly && 'readonly'
     const handleChange = (event) => {
         setValue(event.target.value)
     }
@@ -17,7 +16,7 @@ export default function SearchBar({ isReadOnly = false }) {
                 onChange={handleChange}
                 placeholder="Ingin membantu siapa hari ini?"
                 className="bg-transparent w-full focus:outline-none px-4 placeholder-white placeholder-opacity-50 text-xs sm:text-sm md:text-base"
-            // {...readOnlyConf}
+                readOnly={isReadOnly}
             />
             <label htmlFor="search-bar">
                 <IconContext.Provider value={{ color: "white", size: 20 }}>

@@ -18,3 +18,11 @@ h2 {
 h3 {
     @apply text-sm md:text-base;
 }
+
+.markdown img {
+    @apply w-full md:w-4/5 my-4 mx-auto;
+}
+
+.markdown p {
+    @apply py-2;
+}

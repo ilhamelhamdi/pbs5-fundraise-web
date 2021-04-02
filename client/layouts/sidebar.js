@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import Image from 'next/image'
 import { useVisible } from '../lib/global'
 import Link from 'next/link'
@@ -6,7 +6,7 @@ import Button from '../components/button'
 
 const sideBarNav = [
   { text: "Beranda", link: "/", imgPath: "home.svg" },
-  { text: "Donasi", link: "/campaign/all", imgPath: "donation.svg" },
+  { text: "Donasi", link: "/discover/all", imgPath: "donation.svg" },
   { text: "Galang Dana", link: "/campaign-submission", imgPath: "campaign-submission.svg" },
   { text: "Donasi Universal", link: "/universal-donation", imgPath: "universal-donation.svg" },
   { text: "Belanja & Donasi", link: "/shop-and-donate", imgPath: "shop-and-donate.svg" },
@@ -22,11 +22,29 @@ const user = {
 
 export default function Sidebar({ sendSidebarStatus, sidebarStatus }) {
   const { ref, isVisible, setIsVisible } = useVisible(false, ['click', 'touchstart'])
-  const isLoggedIn = true
+  const [loggedIn, setLoggedIn] = useState(true)
   const styleNav = (sidebarStatus === 'on') ? 'left-0' : '-left-full'
   const styleBg = (sidebarStatus === 'off') && 'hidden'
-  const loginBtnConf = { color1: 'white', color2: 'mypurple-darkest', withBorder: true, withChange: true, link: '/login', text: 'Masuk', eventType: { on: 'touchstart', off: 'touchend' }, width: 'full' }
-  const registerBtnConf = { color1: 'white', color2: 'mypurple-darkest', withBorder: true, withChange: true, link: '/register', text: 'Daftar', eventType: { on: 'touchstart', off: 'touchend' }, width: '1/2' }
+  const loginBtnConf = {
+    color1: 'white',
+    color2: 'mypurple-darkest',
+    withBorder: true,
+    withChange: true,
+    link: '/login',
+    text: 'Masuk',
+    eventType: { on: 'touchstart', off: 'touchend' },
+    width: 'full'
+  }
+  const registerBtnConf = {
+    color1: 'white',
+    color2: 'mypurple-darkest',
+    withBorder: true,
+    withChange: true,
+    link: '/register',
+    text: 'Daftar',
+    eventType: { on: 'touchstart', off: 'touchend' },
+    width: '1/2'
+  }
 
   useEffect(() => {
     setIsVisible(sidebarStatus === 'on')
@@ -36,14 +54,17 @@ export default function Sidebar({ sendSidebarStatus, sidebarStatus }) {
     if (!isVisible) sendSidebarStatus('off')
   }, [isVisible])
 
+
   return (
     <>
+      {/* Background */}
       <div className={`bg-black bg-opacity-40 h-screen w-screen fixed z-40 transform transition-all ease-out duration-500 ${styleBg}`}></div>
 
+      {/* Sidebar */}
       <div className={`sidebar px-8 py-10 h-screen w-10/12 bg-mypurple-darkest fixed z-50 transform transition-all ease-out duration-500 inset-y-0 ${styleNav}`} ref={ref}>
 
         {/* User Profile Or Guest */}
-        {isLoggedIn ? (
+        {loggedIn ? (
           <Link href="/user">
             <a className="account flex flex-row items-center border-mypurple-lighter h-20">
               <div className="flex-none flex justify-center items-center w-14 h-14 bg-white border-4 border-white rounded-full overflow-hidden">
@@ -63,6 +84,7 @@ export default function Sidebar({ sendSidebarStatus, sidebarStatus }) {
           </div>
         )}
 
+        {/* Navigation menu */}
         <div className="sidebar-nav pt-4 border-t">
           {sideBarNav.map(nav => (
             <Link href={nav.link} key={nav.text.toLowerCase().replace(/ /g, "-")}>
@@ -76,7 +98,8 @@ export default function Sidebar({ sendSidebarStatus, sidebarStatus }) {
           ))}
         </div>
 
-        {isLoggedIn && (
+        {/* Logout */}
+        {loggedIn && (
           <Link href="/">
             <a className="logout absolute left-8 bottom-10 text-white  flex flex-row items-center hover:underline">
               <div className="h-12 mr-4 flex items-center">

@@ -9,11 +9,19 @@ module.exports = {
       'xl': '1280px',
       '2xl': '1536px',
     },
+    minHeight: {
+      '150': '37.5rem',
+    },
+    maxHeight: {
+      '150': '37.5rem',
+    },
     extend: {
       colors: {
         mypurple: {
           darkest: '#4F2671',
+          // darkest: '#290849',
           dark: '#7D44AA',
+          // dark: '#55185D',
           standard: '#A971D6',
           light: '#DAABF7',
           lighter: '#E5BDFF',
@@ -45,7 +53,11 @@ module.exports = {
       },
       spacing: {
         '150': '37.5rem',
-      }
+        'screen-4/5': '80vh',
+      },
+      screens: {
+        'xs': '360px',
+      },
     },
   },
   variants: {

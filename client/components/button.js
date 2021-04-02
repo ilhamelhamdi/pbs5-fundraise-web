@@ -65,7 +65,7 @@ const Button = ({
     return (
         <Link href={link}>
             <a
-                className={`rounded-full px-6 box-border transition-all flex justify-center items-center ${className} ${isActive ? styleActive : styleInactive} w-${width} h-${height}`}
+                className={`rounded-full px-4 box-border transition-all flex justify-center items-center ${className} ${isActive ? styleActive : styleInactive} w-${width} h-${height}`}
                 onClick={(e) => { if (!hasLink) e.preventDefault() }}
                 ref={element} >
                 <span className="inline-block align-middle whitespace-nowrap">
