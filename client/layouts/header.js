@@ -24,7 +24,7 @@ export default function Header({ withChangeHeader = false, withLogoNoBackBtn = t
     const noTop = "bg-mypurple-darkest shadow-xl"
     const isTop = "bg-gradient-to-b from-gray-800"
     const [windowWidth, breakpoint] = GetWidth()
-    const [style, setStyle] = useState((!withChangeHeader || (windowWidth <= breakpoint)) ? noTop : isTop)
+    const [style, setStyle] = useState(!withChangeHeader ? noTop : isTop)
 
     const handleSidebar = () => {
         sendSidebarStatus('on')
@@ -36,16 +36,17 @@ export default function Header({ withChangeHeader = false, withLogoNoBackBtn = t
         } else {
             setStyle(isTop)
         }
+        // console.log("scrollY", window.scrollY);
+
     };
 
     useEffect(() => {
-        if (withChangeHeader && windowWidth > breakpoint) window.addEventListener('scroll', handleScroll)
+        if (withChangeHeader && (windowWidth > breakpoint)) window.addEventListener('scroll', handleScroll)
         return () => window.removeEventListener('scroll', handleScroll)
     })
 
     useEffect(() => {
         if (windowWidth <= breakpoint) setStyle(noTop)
-        else setStyle(isTop)
     }, [windowWidth])
 
     const Logo = () => {

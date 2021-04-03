@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 
 const GetWidth = (props) => {
-    const [windowWidth, setWindowWidth] = useState(0);
+    const [windowWidth, setWindowWidth] = useState();
     const breakpoint = 832
 
     useEffect(() => {

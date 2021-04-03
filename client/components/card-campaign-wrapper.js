@@ -18,7 +18,7 @@ export default function CardCampaignWrapper({
 }) {
 
     return (
-        <div className={`card-campaign-wrapper mx-auto px-4 mb-6 ${className}`}>
+        <div className={`card-campaign-wrapper mx-auto sm:px-4 mb-6 ${className}`}>
             <Link href={`/campaign/${tagline}`}>
                 <a className={`bg-white block w-full transform transition-all hover:-translate-y-2 shadow-lg text-sm lg:text-base rounded-2xl overflow-hidden`}>
                     <Thumbnail data={thumbnail} />

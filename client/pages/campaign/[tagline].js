@@ -61,7 +61,7 @@ const Tagline = (props) => {
 
     // BEGINNING Configuration
     const { tagline } = router.query
-    const layoutConf = { hasBodyTopPad: true, withChangeHeader: false, title: tagline, withLogoNoBackBtn: false }
+    const layoutConf = { hasBodyTopPad: true, title: tagline, withLogoNoBackBtn: false }
     const buttonDonationConf = { color1: 'mypurple-darkest', link: `/campaign/${tagline}/donate`, text: "Donasi Sekarang" }
     const buttonShareConf = { color1: 'mypurple-dark', color2: 'white', link: '/', text: "Bagikan", hasLink: false, withBorder: true }
     const buttonNavConf = { color1: 'mypurple-dark', color2: 'white', withBorder: true, }

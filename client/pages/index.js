@@ -59,11 +59,11 @@ export default function Home({ campaigns }) {
         <div id="universal-donation-banner-img" className=" max-w-xs sm:w-5/20 order-2 sm:order-1 sm:flex-none" >
           <Image src="/img/confused.svg" width={1000} height={1000} fill="responsive" />
         </div>
-        <div className="banner-info flex flex-col flex-auto order-1 sm:order-2 w-full sm:w-5/12 pl-8">
-          <h2 className="mb-4 w-full text-2xl font-bold text-white ">
+        <div className="banner-info flex flex-col flex-auto order-1 sm:order-2 w-full sm:w-5/12 sm:pl-8">
+          <h2 className="mb-4 w-full text-2xl font-bold text-white text-center sm:text-left">
             Bingung Memilih Galangan Dana?
             </h2>
-          <p className="mb-4 w-full text-white">
+          <p className="mb-4 w-full text-white text-justify sm:text-left">
             Anda dapat memilih #DonasiUniversal agar kami membantu Anda memilihkan dan menyalurkan donasi kepada penerima manfaat yang tepat
             </p>
         </div>

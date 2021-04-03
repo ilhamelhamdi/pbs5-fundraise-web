@@ -12,7 +12,7 @@ export default class MainMenu extends React.Component {
         ]
         // const { windowWidth, breakpoint } = GetWidth()
         return (
-            <nav className='nav-bar container xl:max-w-screen-lg sm:rounded-full bg-mypurple-darkest mx-auto transform -translate-y-10 flex flex-row justify-around items-center px-2 py-4  md:p-4'>
+            <nav className='nav-bar sm:container xl:max-w-screen-lg sm:rounded-full bg-mypurple-darkest mx-auto transform -translate-y-10 flex flex-row justify-around items-center px-2 py-4  md:p-4'>
                 {mainMenu.map(e => {
                     const iconStyle = { fill: '#DAABF7', width: 30, height: 30 }
                     return (
