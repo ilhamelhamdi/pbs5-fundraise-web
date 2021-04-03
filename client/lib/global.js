@@ -21,7 +21,7 @@ export const useVisible = (initialIsVisible, eventType = ['click']) => {
         };
     }, []);
 
-    return { ref, isVisible, setIsVisible };
+    return [ref, isVisible, setIsVisible];
 }
 
 export const getTimeDifference = (any, current) => {

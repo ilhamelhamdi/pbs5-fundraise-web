@@ -65,7 +65,7 @@ export default function Header({ withChangeHeader = false, withLogoNoBackBtn = t
             <>
                 {withLogoNoBackBtn ? <Logo /> : (
                     <IconContext.Provider value={{ color: "white", size: 24 }}>
-                        <div onClick={() => router.back()} className="mr-2" ><BiArrowBack /></div>
+                        <div onClick={() => router.back()} className="mr-2 cursor-pointer" ><BiArrowBack /></div>
                     </IconContext.Provider>
                 )}
                 <Link href="/search">

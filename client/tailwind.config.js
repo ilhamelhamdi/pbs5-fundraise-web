@@ -56,7 +56,7 @@ module.exports = {
         'screen-4/5': '80vh',
       },
       screens: {
-        'xs': '360px',
+        // 'xs': '360px',
       },
     },
   },

@@ -1,8 +1,11 @@
 import React, { useEffect, useState } from 'react'
 import Image from 'next/image'
+import { useCookies } from "react-cookie"
 import { useVisible } from '../lib/global'
 import Link from 'next/link'
 import Button from '../components/button'
+import axios from 'axios'
+import { useRouter } from 'next/router'
 
 const sideBarNav = [
   { text: "Beranda", link: "/", imgPath: "home.svg" },
@@ -14,16 +17,19 @@ const sideBarNav = [
   { text: "FAQ", link: "/faq", imgPath: "faq.svg" },
   { text: "Tentang Kami", link: "/about-us", imgPath: "about-us.svg" },
 ]
-const user = {
-  name: "Ilham Abdillah",
-  email: "ilhamabdillah123@gmail.com",
-  avatar: "photo-profile.jpg"
-}
+// const user = {
+//   name: "Ilham Abdillah",
+//   email: "ilhamabdillah123@gmail.com",
+//   avatar: "photo-profile.jpg"
+// }
 
 export default function Sidebar({ sendSidebarStatus, sidebarStatus }) {
-  const { ref, isVisible, setIsVisible } = useVisible(false, ['click', 'touchstart'])
-  const [loggedIn, setLoggedIn] = useState(true)
-  const styleNav = (sidebarStatus === 'on') ? 'left-0' : '-left-full'
+  const router = useRouter()
+  const [ref, isVisible, setIsVisible] = useVisible(false, ['click', 'touchstart'])
+  const [cookie, setCookie, removeCookie] = useCookies(["user_token"])
+  const [loggedIn, setLoggedIn] = useState(false)
+  const [user, setUser] = useState({ name: "Guest", email: "guest@gmail.com", avatarPath: "/img/photo-profile.jpg" })
+  const styleNav = (sidebarStatus === 'on') ? 'right-0' : '-right-full'
   const styleBg = (sidebarStatus === 'off') && 'hidden'
   const loginBtnConf = {
     color1: 'white',
@@ -46,6 +52,28 @@ export default function Sidebar({ sendSidebarStatus, sidebarStatus }) {
     width: '1/2'
   }
 
+  const handleLoggedUser = () => {
+    if (cookie.user_token === undefined) return
+
+    axios.get(
+      process.env.API_BASE_URL + '/users/me',
+      { headers: { Authorization: `Bearer ${cookie.user_token}` } }
+    ).then(({ data }) => {
+      const [name, email, avatarPath] = [data.fullname, data.email, process.env.API_BASE_URL + data.profile_picture.formats.thumbnail.url]
+      setUser({ name, email, avatarPath })
+    })
+      .catch(error => {
+        console.log('An error occurred:', error.response);
+      })
+  }
+
+  const handleLogout = () => {
+    setIsVisible(sidebarStatus === 'off')
+    router.push('/')
+    removeCookie("user_token")
+    console.log('Logged Out');
+  }
+
   useEffect(() => {
     setIsVisible(sidebarStatus === 'on')
   }, [sidebarStatus])
@@ -54,6 +82,12 @@ export default function Sidebar({ sendSidebarStatus, sidebarStatus }) {
     if (!isVisible) sendSidebarStatus('off')
   }, [isVisible])
 
+  useEffect(() => {
+    handleLoggedUser()
+    setLoggedIn(cookie.user_token !== undefined)
+  }, [cookie.user_token])
+  // TESTING
+  // console.log(cookie.user_token);
 
   return (
     <>
@@ -68,7 +102,7 @@ export default function Sidebar({ sendSidebarStatus, sidebarStatus }) {
           <Link href="/user">
             <a className="account flex flex-row items-center border-mypurple-lighter h-20">
               <div className="flex-none flex justify-center items-center w-14 h-14 bg-white border-4 border-white rounded-full overflow-hidden">
-                <Image src={`/img/${user.avatar}`} alt="avatar" width="100" height="100" />
+                <Image src={user.avatarPath} alt="avatar" width="100" height="100" />
               </div>
               <div className="ml-4 flex-shrink flex flex-col items-start justify-start overflow-hidden">
                 <h2 className="w-full text-white text-xl sm:text-2xl truncate">{user.name}</h2>
@@ -101,7 +135,9 @@ export default function Sidebar({ sendSidebarStatus, sidebarStatus }) {
         {/* Logout */}
         {loggedIn && (
           <Link href="/">
-            <a className="logout absolute left-8 bottom-10 text-white  flex flex-row items-center hover:underline">
+            <a
+              onClick={() => handleLogout()}
+              className="logout absolute left-8 bottom-10 text-white  flex flex-row items-center hover:underline">
               <div className="h-12 mr-4 flex items-center">
                 <Image src={`/img/logout.svg`} width="30" height="30" />
               </div>

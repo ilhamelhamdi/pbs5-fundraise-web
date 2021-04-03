@@ -26,19 +26,14 @@ export default function Login(props) {
                 password: password,
             })
             .then(response => {
-                // Handle success.
-                console.log('Well done!');
-                console.log('User profile', response.data.user);
-                console.log('User token', response.data.jwt);
                 setCookie("user_token", JSON.stringify(response.data.jwt), {
                     path: "/",
                     maxAge: 3600 * 24, // Expires after 1 day
                     sameSite: true,
                 })
-                router.push('/')
+                router.back()
             })
             .catch(error => {
-                // Handle error.
                 console.log('An error occurred:', error.response);
             });
     }
